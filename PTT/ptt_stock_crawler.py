@@ -11,9 +11,7 @@ headers_data = {
 response  = requests.get(url, headers=headers_data)
 soup = BeautifulSoup(response.text, "html.parser") #用 html 的解析器 分析 response.text
 articles = soup.find_all("div", class_="r-ent") # 找到所有 class 為 r-ent 的 div 標籤
-title_data =[]
-day_data =[]
-popularity_data = []
+print(soup) # 印出所有資料的數量
 
 all_data = []
 for a in articles:
