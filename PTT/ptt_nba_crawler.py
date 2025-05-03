@@ -46,15 +46,12 @@ for a in articles:
         singal_article["popularity"] = popularity
     else:
         singal_article["popularity"] = None
-
-
     all_data.append(singal_article) # 將每篇文章的資料加入列表
+
 print(all_data) # 印出所有資料
 
-with open("ptt_data.json", "w", encoding="utf-8") as f:
-    json.dump(all_data, f, ensure_ascii=False, indent=4) # 將資料寫入檔案
-# if response.status_code == 200:
-#         f.write(response.text)
-#         print("successfully.")
-# else:
-#     print("Failed. Status code:", response.status_code)
+# with open("ptt_data.json", "w", encoding="utf-8") as f:
+#     json.dump(all_data, f, ensure_ascii=False, indent=4) # 將資料寫入檔案
+
+df = pd.DataFrame(all_data) # 將資料轉換為 DataFrame
+df.to_excel("ptt_data.xlsx", index=False,engine="openpyxl") # 將資料寫入 Excel 檔案
